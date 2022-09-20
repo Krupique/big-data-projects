@@ -1,0 +1,249 @@
+# Como instalar e configurar Linux em uma máquina virtual parte 3/3
+
+Olá pessoal, tudo tranquilo?
+
+Dando sequência, vamos para a parte 3 do tutorial. Agora irei mostrar como fazer a instalação e configuração do CentOS camada a camada em sua VM. Esta postagem traz conteúdos um pouco mais avançados que as duas primeiras. Portanto, recomendo fortemente a leitura das partes 1 e 2 antes de continuarmos.
+
+* <strike>Parte 1: O que são máquinas virtuais e como instalar o VirtualBox em sua máquina;</strike>
+* <strike>Parte 2: Como instalar o Ubuntu na máquina virtual;</strike>
+* Parte 3: Como instalar o CentOS camada a camada na máquina virtual;
+
+Também estou assumindo que você já sabe como configurar, instalar e carregar uma iso no VirtualBox, pois irei começar direto a parti da instalação do CentOS.
+
+Sem mais delongas, vamos para a instalação.
+
+### Download do CentOS Minimal
+
+No site do CentOS é possível encontrar o arquivo de download facilmente. A arquitetura que iremos baixar será a `x86_64`. Basta clicar e você será redirecionado para a parte dos downloads, onde você vai selecionar de qual repositório você deseja baixar.
+
+Link para download direto: [CentOS 7.9](http://mirror.ufscar.br/centos/7.9.2009/isos/x86_64/CentOS-7-x86_64-Minimal-2009.iso)
+
+<img src="resources/42.png">
+
+Selecione a versão **CentOS-7-x86_64-Minimal-2009.iso** e nesse momento o download será iniciado.
+
+<img src="resources/43.png">
+
+Após finalizar o download, inicie o VirtualBox, clique em Novo e crie uma nova Máquina Virtual.
+
+> Nota: O VirtualBox não possui a opção CentOS na versão. Então selecione **Other Linux (64-bit)** e continue a criação da VM.
+
+<img src="resources/44.png">
+
+### No CentOS
+
+Após iniciar o CentOS você se depara com a tela de instalação. Clique em **Install CentOS 7**
+
+<img src="resources/45.png">
+
+Se você leu a parte 2 do tutorial já percebeu uma semelhança na instalação do CentOs com a do Ubuntu. A primeira coisa a ser feita é a escolha do idioma principal do SO. Selecione o idioma desejado e clique em **Continue**.
+
+<img src="resources/46.png">
+
+Agora temos uma série de configurações para serem feitas, divididas em três abas:
+* Localização;
+* Software;
+* System;
+
+**Localização**<br/>
+
+Começando pela localização. Selecione a opção **DATE & TIME**.
+
+<img src="resources/47.PNG">
+
+Escolha o seu fuso-horário clicando em algum país. Clique em **Done** para confirmar.
+
+<img src="resources/48.PNG">
+
+**KEYBOARD**
+
+Idioma do teclado. Caso o seu teclado seja o padrão Brasileiro, siga o passo a passo:
+
+<img src="resources/50.png">
+
+**Language Support**
+
+Caso você queira instalar mais um idioma no seu SO. Não é necessário mexer nesse aqui.
+
+<img src="resources/51.PNG">
+
+**INSTALLATION SOURCE**
+
+Está opção é para caso você queira adicionar repositórios adicionais, pode deixar do jeito que está por padrão.
+
+<img src="resources/52.PNG">
+
+**SOFTWARE SELECTION**
+
+Está opção é para caso você queira adicionar softwares adicionais, pode deixar do jeito que está por padrão.
+
+<img src="resources/53.PNG">
+
+Vamos par a parte de SYSTEM
+
+**INSTALLATION DESTINATION**
+
+Aqui é para selecionar o disco no qual o SO será instalado, bem como configurações de partição. Pode deixar o padrão, pois o disco de instalação é o disco virtual que foi definido nas configurações da VM.
+
+<img src="resources/54.PNG">
+
+**NETWORK & HOSTNAME**
+
+Por padrão, o CentOS deixa desligado a conexão com a internet. Devemos ativá-la.
+
+<img src="resources/55.PNG"><br/>
+
+<img src="resources/56.PNG">
+
+**SECURITY POLICY**
+
+Esta opção se refere as políticas de segurança. Vamos deixar o padrão.
+
+<img src="resources/57.PNG">
+
+---
+
+Ufa, depois de todas essas configurações é hora de iniciar a instalação. Clique em **Begin Installation**.
+
+Enquanto o CentOS é instalado vamos configurar o usuário padrão e o usuário root.
+
+Começando pelo **ROOT PASSWORD**.
+
+<img src="resources/59.PNG">
+
+
+> Nota: Caso a senha seja considerada muito simples você terá que clicar em **Done** duas vezes.
+
+**USER CREATION**
+
+Passo bem semelhante ao que fizemos na instalação do Ubuntu. Defina o seu **Nome Completo**, **Nome de Usuário**, **Senha** e a **Confirmação de Senha**.
+
+<img src="resources/60.PNG">
+
+> Nota: Caso a senha seja considerada muito simples você terá que clicar em **Done** duas vezes novamente.
+
+---
+
+Com a instalação concluída clique em **Finish Configuration**. Nesse momento o SO vai configurar alguns arquivos de configuração e ao terminar clique na opção **Reboot**.
+
+<img src="resources/61.PNG">
+
+Pronto! Agora temos o nosso CentOS instalado. É só partir para a diversão kkkkk.
+
+Calma, um SO cru desse jeito não tem muito serventia para nós. Vamos instalar camada a camada para adicionar mais recursos ao nosso SO.
+
+<img src="resources/62.PNG">
+
+A primeira etapa é logar no sistema. Óbvio que você lembra o seu username e senha né. Não é o root, e sim o usuário padrão.
+
+<img src="resources/63.PNG">
+
+Podemos mexer normalmente no nosso SO. Para quem não é habituado com Linux o comando `ls -la` exibe os diretórios e arquivos detalhados, vejamos:
+
+<img src="resources/64.PNG">
+
+Veja que só temos alguns arquivos de configuração no nosso SO. Vamos continuar a instalação.
+
+### Instalação da Interface Gráfica, Componentes e outros Utilitários
+
+Vamos começar verificando todos os grupos de pacotes disponíveis usando o comando `yum grouplist`. Como você pode ver na saída abaixo, precisamos basicamente instalar os grupos de pacotes **GNOME Desktop** e **Graphical Administration Tools**.
+
+<img src="resources/67.PNG">
+
+Antes de instalar um novo pacote, é sempre uma boa ideia atualizar o Sistema com as últimas versões disponíveis usando o comando yum update conforme mostrado abaixo.
+
+> `sudo yum update`
+
+<img src="resources/68.PNG">
+
+Neste momento será solicitado a confirmação. Digite `y`.
+
+Para instalar os grupos de pacotes GNOME Desktop e Graphical Administration Tools, você precisa usar:
+> `sudo yum groupinstall "GNOME Desktop" "Graphical Administration Tools"`
+
+<img src="resources/69.PNG">
+
+Após a instalação bem-sucedida do ambiente GNOME Desktop, você precisa habilitar e tornar o modo gráfico como padrão. Isso pode ser feito usando o comando gráfico:
+
+> `sudo systemctl set-default graphical`
+
+Caso você não queira ficar digitando sudo e a senha toda vez, logue como usuário root:
+
+> `su root` <br/>
+> Password: Digite sua senha de usuário root
+
+Agora o comando pode ser simplesmente assim:
+
+> `systemctl set-default graphical`
+
+<img src="resources/70.PNG">
+
+Pronto! Agora é só reinciar que na próxima inicialização o sistema já terá a interface gráfica.
+
+> `reboot`
+
+<img src="resources/71.PNG">
+
+### Importando e Exportando Versão
+
+Podemos desligar a VM por enquanto. 
+
+No seu VirtualBox vá em Arquivo (F) e selecione a opção Exportar Appliance.
+
+<img src="resources/72.png">
+
+Escolha o CentOS que você acabou de instalar e clique em próximo
+
+<img src="resources/73.png">
+
+Deixa o Formato de Virtualização padrão Aberta 1.0.
+
+Na opção Arquivo (F) Navegue até o diretório que você deseja guardar o arquivo. É interessante criar um diretório chamado backup para que você consiga controlar as versões de backups das suas VMs.
+
+As outras opções você pode deixar como estão por padrão. Clique em próximo.
+
+<img src="resources/74.png">
+
+É recomendado você detalhar na descrição sobre do que se trata essa versão do backup. Segue a imagem:
+
+<img src="resources/75.PNG">
+
+
+
+
+
+Para finalizar clique em **Exportar**. Neste momento o VirtualBox vai começar a gravação do seu backup.
+
+### Mais algumas configurações
+
+Vamos instalar o Gedit e o Firefox:
+
+> `sudo yum install gedit`<br/>
+> `sudo yum install firefox`<br/>
+
+Temos um editor de textos e um navegador.
+
+Agora iremos conceder permissão de root para o usuário padrão. Primeiro faça login como usuário root e depois vá em editar o arquivo sudoers:
+
+> `su root` <br/>
+> `gedit /etc/sudoers` <br/>
+
+Navegue até o final do arquivo e adicione permissão para o seu usuário padrão, como na imagem:
+
+> Nota: Pressione `1 tab` para separar cada parâmetro. 
+
+<img src="resources/76.png">
+
+Salvar e Fechar arquivo. Agora você como usuário padrão pode fazer qualquer ação de um usuário root.
+
+> Nota: Faça isso somente se você não tiver problemas com segurança ou acesso. Em um ambiente corporativo você não deve conceder permissão root para qualquer usuário.<br/>
+Lembre-se: O usuário root pode fazer o que quiser no SO. Incluindo criar, ler, escrever e excluir qualquer arquivo ou diretório no SO.
+
+
+Finalizamos essa parte 3 do Tutorial. Espero que tenham gostado dessa série de postagens. Eu trouxe esses guias sobre Máquinas Virtuais, instalação do Ubuntu e a instalação do CentOS. porque futuramente irei mostrar como instalar e manipular o Hadoop.
+
+O Hadoop é o principal framework para lidar com computação distribuída, sendo o modelo ideal para trabalhar com o Big Data.
+
+E o Linux virtualizado é o ambiente perfeito para que possamos testar o Hadoop, simulando um cluster de computadores no nosso ambiente virtual. 
+
+Até mais pessoal!
