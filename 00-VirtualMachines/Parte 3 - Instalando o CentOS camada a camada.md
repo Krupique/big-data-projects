@@ -45,7 +45,7 @@ Agora temos uma série de configurações para serem feitas, divididas em três 
 * Software;
 * System;
 
-**Localização**<br/>
+**LOCALIZATION**<br/>
 
 Começando pela localização. Selecione a opção **DATE & TIME**.
 
@@ -61,7 +61,7 @@ Idioma do teclado. Caso o seu teclado seja o padrão Brasileiro, siga o passo a 
 
 <img src="resources/50.png">
 
-**Language Support**
+**LNAGUAGE SUPPORT**
 
 Caso você queira instalar mais um idioma no seu SO. Não é necessário mexer nesse aqui.
 
@@ -93,7 +93,7 @@ Por padrão, o CentOS deixa desligado a conexão com a internet. Devemos ativá-
 
 <img src="resources/55.PNG"><br/>
 
-<img src="resources/56.PNG">
+<img src="resources/56.png">
 
 **SECURITY POLICY**
 
@@ -202,7 +202,7 @@ Na opção Arquivo (F) Navegue até o diretório que você deseja guardar o arqu
 
 As outras opções você pode deixar como estão por padrão. Clique em próximo.
 
-<img src="resources/74.png">
+<img src="resources/74.PNG">
 
 É recomendado você detalhar na descrição sobre do que se trata essa versão do backup. Segue a imagem:
 
