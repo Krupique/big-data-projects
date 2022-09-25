@@ -8,9 +8,34 @@ Dando sequência, vamos para a parte 3 do tutorial. Agora irei mostrar como faze
 * <strike>Parte 2: Como instalar o Ubuntu na máquina virtual;</strike>
 * Parte 3: Como instalar o CentOS camada a camada na máquina virtual;
 
-Também estou assumindo que você já sabe como configurar, instalar e carregar uma iso no VirtualBox, pois irei começar direto a parti da instalação do CentOS.
+---
 
-Sem mais delongas, vamos para a instalação.
+O CentOS é uma distribuição Linux derivada do Red Hat Enterprise Linux (RHEL) e é distribuída de maneira gratuita pela comunidade. Este sistema é amplamente utilizado pelo mercado. A Red Hat conta com uma família de distribuições:
+* CentOS: Distribuição gratuita para servidores;
+* RHEL: Distribuição paga e com suporte direto da empresa;
+* Fedora: Distribuição voltada para máquinas de trabalho e com pacotes mais recentes.
+
+O CentOS é uma distribuição Linux conhecida pelo seu alto nível de estabilidade, previsibilidade e pela possibilidade de ser configurada de múltiplas maneiras. Feita a partir do Red Hat Enterprise Linux (RHEL), ela é mantida em um modelo simples, com alto nível de transparência e abertura.
+
+
+### Quais são as principais as vantagens do CentOS?
+
+* **É gratuito**: Apesar de não ter suporte personalizado, como o Red Hat, por exemplo, o CentOS conta com uma comunidade ativa, pronta para solucionar problemas. Além disso, graças aos fóruns e à documentação oficial, as chances de uma falha não ter solução disponível é muito baixa.
+
+* **Compatibilidade com o Red Hat**: Como os códigos-fonte do CentOS e do Red Hat Enterprise Linux são semelhantes, a compatibilidade entre os dois sistemas é elevada. Em outras palavras, é possível adotar extensões e aplicações semelhantes em ambos os ambientes, tornando a migração entre os sistemas ágil e segura.
+
+* **Estabilidade de versões**: Outro ponto a se destacar é a facilidade para ser implementado. O CentOS não exige atualizações constantes e o suporte ao software é feito com uma visão de longo prazo. Dessa forma, a equipe de TI pode utilizar esse sistema mesmo em ambientes críticos, nos quais o número de interrupções aceitas para grandes updates é baixo. Além disso, a simplificação das rotinas de gestão de TI proporcionada por esse fator reduz os custos operacionais de médio e longo prazo.
+
+* **Amigável com o usuário final**: Por ser um sistema operacional sólido e com uma boa interface gráfica, o CentOS também pode ser utilizado nas máquinas do usuário final. Isso dá liberdade para gestores de TI, que podem criar uma infraestrutura corporativa integrada e eficaz.
+
+* **Leve e com ótima perfomance**: Vale destacar, também, que o baixo consumo de recursos torna o CentOS uma opção atrativa especialmente em companhias cujos dispositivos têm uma baixa capacidade de processamento.
+
+**Referências:**
+* [1] CentOS: Tudo O Que Você Precisa Saber Sobre Esta Distribuição Linux. Disponível em: <[e-tinet.com](https://e-tinet.com/linux/centos-distribuicao-linux/)>
+* [2] SIMIONI, Dionatan. O que é CentOS e como usá-lo. Disponível em: <[hostgator.com](https://www.hostgator.com.br/blog/o-que-e-centos/)>
+
+
+Sem mais delongas, vamos para a instalação. Neste tutorial estou assumindo que você já sabe como configurar, instalar e carregar uma iso no VirtualBox, pois irei começar direto com a instalação do CentOS. Caso não saiba, leia as partes 1 e 2 do tutorial.
 
 ### Download do CentOS Minimal
 
@@ -45,7 +70,7 @@ Agora temos uma série de configurações para serem feitas, divididas em três 
 * Software;
 * System;
 
-**LOCALIZATION**<br/>
+**Localização**<br/>
 
 Começando pela localização. Selecione a opção **DATE & TIME**.
 
@@ -61,7 +86,7 @@ Idioma do teclado. Caso o seu teclado seja o padrão Brasileiro, siga o passo a 
 
 <img src="resources/50.png">
 
-**LNAGUAGE SUPPORT**
+**Language Support**
 
 Caso você queira instalar mais um idioma no seu SO. Não é necessário mexer nesse aqui.
 
@@ -93,7 +118,7 @@ Por padrão, o CentOS deixa desligado a conexão com a internet. Devemos ativá-
 
 <img src="resources/55.PNG"><br/>
 
-<img src="resources/56.png">
+<img src="resources/56.PNG">
 
 **SECURITY POLICY**
 
@@ -202,17 +227,67 @@ Na opção Arquivo (F) Navegue até o diretório que você deseja guardar o arqu
 
 As outras opções você pode deixar como estão por padrão. Clique em próximo.
 
-<img src="resources/74.PNG">
+<img src="resources/74.png">
 
 É recomendado você detalhar na descrição sobre do que se trata essa versão do backup. Segue a imagem:
 
 <img src="resources/75.PNG">
 
-
-
-
-
 Para finalizar clique em **Exportar**. Neste momento o VirtualBox vai começar a gravação do seu backup.
+
+### Habilitando recursos adicionais no VirtualBox
+
+A exemplo do que fizemos com o Ubuntu, aqui também iremos adicionar os recursos espciais do VirtualBox. O processo é exatamente o mesmo:
+
+<img src="resources/80.png"><br/>
+
+<img src="resources/81.png"><br/>
+
+Digite a senha do usuário root:
+
+<img src="resources/82.png"><br/>
+
+
+
+
+### Instalção do GCC
+
+GCC ou GNU Compiler Collection é uma ferramenta lançada pela Free Software Foundation e como o nome sugere, é uma coleção muito útil de compiladores de programação como C, C++ , Objective-C, Objective-C++, Fortran, Java, Go e Ada. O GCC é um compilador oficial do sistema operacional GNU, mas também é um compilador padrão em muitos sistemas operacionais Unix, como o Linux.
+
+> `sudo yum install -y gcc`
+
+
+### Adicionando pastas compartilhadas
+
+Você pode ter percebido que os SOs estão completamente independentes um do outro. Mas e se quisermos compartilhar arquivos entre os Sistemas?
+Esta situação pode ser bastante útil quando queremos agilizar algum serviço. Para compartilhar pastas utilizamos uma opção do VirtualBox chamada de **Pastas Compartilhadas**, o nome não poderia ser mais sugestivo. 
+
+No VirtualBox, vá em:
+
+<img src="resources/77.png"><br/>
+
+<img src="resources/78.png"><br/>
+
+Nas opções:
+
+* **3**- Escolha o diretório que será compartilhado;
+* **4**- O nome do diretório;
+* **5**- O modo de compartilhamento. Somente leitura ou Montar Automaticamente (leitura e escrita).
+
+* Ponto de Montagem pode deixar o padrão **em branco**.
+
+<img src="resources/79.png"><br/>
+
+Veja que agora a pasta compartilhada aparece no desktop:
+
+<img src="resources/83.png">
+
+Para acessá-la basta digitar as credenciais do usuário root. Mas caso você queira acessar via linha de comando vá em:
+
+> `sudo cd /media/sf_sua_pasta`
+
+
+
 
 ### Mais algumas configurações
 
@@ -230,7 +305,7 @@ Agora iremos conceder permissão de root para o usuário padrão. Primeiro faça
 
 Navegue até o final do arquivo e adicione permissão para o seu usuário padrão, como na imagem:
 
-> Nota: Pressione `1 tab` para separar cada parâmetro. 
+> Nota: Pressione `um tab` para separar cada parâmetro. 
 
 <img src="resources/76.png">
 
